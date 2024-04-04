@@ -3,18 +3,22 @@
         <div class="col-xs-6 col-md-4">
             <h2> Grocery list manager </h2>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="enter grocery items" id="txtSearch" [(ngModel)]="task" />
+                <input type="text" class="form-control" placeholder="enter grocery items" id="txtSearch" [(ngModel)]="task.name" />
                 <div class="input-group-btn">
                     <button class="btn btn-primary" type="button" (click)="onClick()">
-                        <span class="">OK</span>
+                        <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
             </div>
             <ul class="list-group">
-                <li *ngFor="let task of tasks" class="list-group-item">
-                    <span> {{ task.name }} </span>
+                <li *ngFor="let task of tasks; let i = index" class="list-group-item">
+                    <span *ngIf="task.editing !== true">{{ task.name }}</span>
+                    <input *ngIf="task.editing === true" type="text" class="form-control" [(ngModel)]="task.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
+                    <i (click)="onEdit(task)" class="fa-solid fa-pencil"></i>
+                    <i (click)="onDelete(task)" class="fa-solid fa-trash"></i>
                 </li>
             </ul>
+            
         </div>
     </div>
 </div>

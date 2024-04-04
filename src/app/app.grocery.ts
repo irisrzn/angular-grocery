@@ -6,11 +6,24 @@ import { Component } from '@angular/core';
 })
 
 export class GroceryComponent {
-    task: string = '';
-    tasks: { name: string;}[] = [];
+    task = {
+        name: '',
+        id: 0
+    };
+    tasks: { id: number; name: string; strike: boolean; editing?: boolean;  }[] = [];
 
     onClick() {
-        this.tasks.push({ name: this.task});
-        this.task = '';
+        if (this.task.id == 0) {
+            this.tasks.push({ id: (new Date()).getTime(), name: this.task.name, strike: false });
+        }
     }
+
+    onEdit(task: { id: number; name: string; strike: boolean; editing?: boolean }) {
+        task.editing = true;
+    }
+    
+    onSave(index: number) {
+        this.tasks[index].editing = false;
+    }
+    
 }
