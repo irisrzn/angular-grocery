@@ -1,0 +1,17 @@
+.custom-input {
+    border: 1px solid #ffc107;
+    border-radius: 20px;
+    padding: 8px 16px;
+}
+
+.custom-input:focus-visible {
+    outline: none;
+}
+
+.custom-button {
+    border-radius: 20px;
+}
+
+.custom-list {
+    border-radius: 18px;
+}

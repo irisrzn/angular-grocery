@@ -1,24 +1,27 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-6 col-md-4">
-            <h2> Grocery list manager </h2>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="enter grocery items" id="txtSearch" [(ngModel)]="task.name" />
-                <div class="input-group-btn">
-                    <button class="btn btn-primary" type="button" (click)="onClick()">
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 py-5 h-100">
+            <h2 class="text-center mb-5">HNGRY</h2>
+            <div class="d-flex justify-content-between">
+                <input type="text" class="w-100 custom-input" placeholder="What do you need?" id="txtSearch" [(ngModel)]="item.name" (keydown.enter)="onClick()" />
+                <button class="btn btn-warning custom-button ms-3 py-2" type="submit" (click)="onClick()">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+
             </div>
-            <ul class="list-group">
-                <li *ngFor="let task of tasks; let i = index" class="list-group-item">
-                    <span *ngIf="task.editing !== true">{{ task.name }}</span>
-                    <input *ngIf="task.editing === true" type="text" class="form-control" [(ngModel)]="task.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
-                    <i (click)="onEdit(task)" class="fa-solid fa-pencil"></i>
-                    <i (click)="onDelete(task)" class="fa-solid fa-trash"></i>
+            <ul class="list-group custom-list mt-5">
+                <li *ngFor="let item of items; let i = index" class="list-group-item border-bottom d-flex align-items-center justify-content-between">
+                    <div class="">
+                        <span *ngIf="item.editing !== true">{{ item.name }}</span>
+                        <input *ngIf="item.editing === true" type="text" class="form-control" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
+                    </div>
+                    <div>
+                        <i (click)="onEdit(item)" class="fa-solid fa-pencil"></i>
+                        <i (click)="onDelete(item)" class="fa-solid fa-trash"></i>
+                    </div>
                 </li>
             </ul>
-            
+
         </div>
     </div>
 </div>
