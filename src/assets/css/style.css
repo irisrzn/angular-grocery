@@ -15,3 +15,8 @@
 .custom-list {
     border-radius: 18px;
 }
+
+.edit-icon,
+.delete-icon {
+    cursor: pointer;
+}

@@ -13,11 +13,11 @@
                 <li *ngFor="let item of items; let i = index" class="list-group-item border-bottom d-flex align-items-center justify-content-between">
                     <div class="">
                         <span *ngIf="item.editing !== true">{{ item.name }}</span>
-                        <input *ngIf="item.editing === true" type="text" class="form-control" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
+                        <input *ngIf="item.editing === true" type="text" class="" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
                     </div>
                     <div>
-                        <i (click)="onEdit(item)" class="fa-solid fa-pencil"></i>
-                        <i (click)="onDelete(item)" class="fa-solid fa-trash"></i>
+                        <i (click)="onEdit(item)" class="fa-solid fa-pencil edit-icon me-2"></i>
+                        <i (click)="onDelete(item)" class="fa-solid fa-trash delete-icon"></i>
                     </div>
                 </li>
             </ul>
