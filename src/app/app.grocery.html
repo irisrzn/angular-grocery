@@ -11,8 +11,8 @@
             </div>
             <ul class="list-group custom-list mt-5">
                 <li *ngFor="let item of items; let i = index" class="list-group-item border-bottom d-flex align-items-center justify-content-between">
-                    <div class="">
-                        <span *ngIf="item.editing !== true">{{ item.name }}</span>
+                    <div (click)="onStrike(item)" [ngClass]="{'strike': item.strike}">
+                        <div *ngIf="item.editing !== true">{{ item.name }}</div>
                         <input *ngIf="item.editing === true" type="text" class="" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
                     </div>
                     <div>
@@ -24,4 +24,4 @@
 
         </div>
     </div>
-</div>
+</div>  

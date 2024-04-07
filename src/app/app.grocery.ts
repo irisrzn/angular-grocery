@@ -39,4 +39,18 @@ export class GroceryComponent {
             }
         }
     }
+
+    onStrike(item: { id: number; name: string; strike: boolean; editing?: boolean }) {
+        for (var i = 0; i < this.items.length; i++) {
+            if (item.id == this.items[i].id) {
+                if (this.items[i].strike) {
+                    this.items[i].strike = false;
+                }
+                else {
+                    this.items[i].strike = true;
+                }
+                break;
+            }
+        }
+    }
 }

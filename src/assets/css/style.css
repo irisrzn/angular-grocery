@@ -20,3 +20,8 @@
 .delete-icon {
     cursor: pointer;
 }
+
+.strike{
+    text-decoration:line-through;
+    cursor: pointer;
+}
