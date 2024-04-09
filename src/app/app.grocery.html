@@ -4,6 +4,14 @@
             <h2 class="text-center mb-5">HNGRY</h2>
             <div class="d-flex justify-content-between">
                 <input type="text" class="w-100 custom-input" placeholder="What do you need?" id="txtSearch" [(ngModel)]="item.name" (keydown.enter)="onClick()" />
+                <input type="number" min="1" class="w-25 custom-input ms-3" placeholder="Quantity" id="txtQuantity" [(ngModel)]="item.quantity" />
+                <select class="w-25 form-select custom-input ms-3" [(ngModel)]="item.measurement">
+                    <option value="pcs">pcs</option>
+                    <option value="ml">ml</option>
+                    <option value="l">l</option>
+                    <option value="g">g</option>
+                    <option value="kg">kg</option>
+                </select>
                 <button class="btn btn-warning custom-button ms-3 py-2" type="submit" (click)="onClick()">
                     <i class="fa-solid fa-plus"></i>
                 </button>
@@ -11,9 +19,26 @@
             </div>
             <ul class="list-group custom-list mt-5">
                 <li *ngFor="let item of items; let i = index" class="list-group-item border-bottom d-flex align-items-center justify-content-between">
-                    <div (click)="onStrike(item)" [ngClass]="{'strike': item.strike}">
-                        <div *ngIf="item.editing !== true">{{ item.name }}</div>
-                        <input *ngIf="item.editing === true" type="text" class="" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" (blur)="onSave(i)" />
+                    <div (click)="onBought(item)">
+                        <div *ngIf="item.editing !== true" class="d-flex align-items-end">
+                            <p class="mb-0" [ngClass]="{'bought': item.bought}">{{ item.name }}</p>
+                            <span class="item-info ms-2">{{ item.quantity }} {{ item.measurement }}</span>
+                        </div>
+                        <div *ngIf="item.editing === true">
+                            <input type="text" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" />
+                            <input type="number" min="1" class="w-25 ms-3" placeholder="Quantity" id="txtQuantity" [(ngModel)]="item.quantity" />
+                            <select class="w-25 form-select ms-3" [(ngModel)]="item.measurement">
+                                <option value="pcs">pcs</option>
+                                <option value="ml">ml</option>
+                                <option value="l">l</option>
+                                <option value="g">g</option>
+                                <option value="kg">kg</option>
+                            </select>
+                            <button class="btn btn-warning custom-button ms-3 py-2" type="submit" (click)="onSave(i)">
+                                Save
+                            </button>
+                        </div>
+
                     </div>
                     <div>
                         <i (click)="onEdit(item)" class="fa-solid fa-pencil edit-icon me-2"></i>
@@ -24,4 +49,4 @@
 
         </div>
     </div>
-</div>  
+</div>

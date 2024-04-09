@@ -21,7 +21,12 @@
     cursor: pointer;
 }
 
-.strike{
+.bought{
     text-decoration:line-through;
     cursor: pointer;
+}
+
+.item-info {
+    font-size: 12px;
+    color: gray;
 }
