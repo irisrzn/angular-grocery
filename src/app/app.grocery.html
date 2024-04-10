@@ -21,7 +21,10 @@
                 <li *ngFor="let item of items; let i = index" class="list-group-item border-bottom d-flex align-items-center justify-content-between">
                     <div (click)="onBought(item)">
                         <div *ngIf="item.editing !== true" class="d-flex align-items-end">
-                            <p class="mb-0" [ngClass]="{'bought': item.bought}">{{ item.name }}</p>
+                            <div>
+                                <input class="form-check-input mb-0 me-2" type="checkbox">
+                                <label class="form-check-label" [ngClass]="{'bought': item.bought}">{{ item.name }}</label>
+                            </div>
                             <span class="item-info ms-2">{{ item.quantity }} {{ item.measurement }}</span>
                         </div>
                         <!-- <div *ngIf="item.editing === true">

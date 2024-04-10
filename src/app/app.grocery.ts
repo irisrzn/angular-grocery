@@ -25,7 +25,7 @@ export class GroceryComponent {
 
     onClick() {
         if (this.item.id == 0 && this.item.name !== '') {
-            this.items.push({ 
+            this.items.unshift({ 
                 id: (new Date()).getTime(), 
                 name: this.item.name, 
                 quantity: this.item.quantity, 
@@ -69,6 +69,21 @@ export class GroceryComponent {
                 break;
             }
         }
+
+        this.sortItemsByBought();
+
+    }
+
+    sortItemsByBought() {
+        this.items.sort((a, b) => {
+            if (a.bought && !b.bought) {
+                return 1;
+            } else if (!a.bought && b.bought) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
     }
 
     constructor(private modalService: NgbModal) {}
