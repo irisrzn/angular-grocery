@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.component';
+
 
 @Component({
     selector: 'app-grocery',
@@ -21,7 +24,7 @@ export class GroceryComponent {
     items: { id: number; name: string; quantity: number; measurement: string; bought: boolean; editing: boolean; }[] = [];
 
     onClick() {
-        if (this.item.id == 0) {
+        if (this.item.id == 0 && this.item.name !== '') {
             this.items.push({ 
                 id: (new Date()).getTime(), 
                 name: this.item.name, 
@@ -67,4 +70,22 @@ export class GroceryComponent {
             }
         }
     }
+
+    constructor(private modalService: NgbModal) {}
+
+    openEditModal(item: any) {
+        const modalRef = this.modalService.open(EditItemModalComponent, { centered: true });
+        modalRef.componentInstance.updatedItem = { ...item };
+        modalRef.result.then((result) => {
+            if (result === 'saved') {
+                const index = this.items.findIndex(i => i.id === item.id);
+                if (index !== -1) {
+                    this.items[index] = { ...modalRef.componentInstance.updatedItem };
+                }
+            }
+        }).catch((error) => {
+            console.log('Modal dismissed with reason: ', error);
+        });
+    }
+    
 }

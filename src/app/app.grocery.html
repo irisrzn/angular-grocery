@@ -12,7 +12,7 @@
                     <option value="g">g</option>
                     <option value="kg">kg</option>
                 </select>
-                <button class="btn btn-warning custom-button ms-3 py-2" type="submit" (click)="onClick()">
+                <button class="btn btn-warning b-radius-general ms-3 py-2" type="submit" (click)="onClick()">
                     <i class="fa-solid fa-plus"></i>
                 </button>
 
@@ -24,7 +24,7 @@
                             <p class="mb-0" [ngClass]="{'bought': item.bought}">{{ item.name }}</p>
                             <span class="item-info ms-2">{{ item.quantity }} {{ item.measurement }}</span>
                         </div>
-                        <div *ngIf="item.editing === true">
+                        <!-- <div *ngIf="item.editing === true">
                             <input type="text" [(ngModel)]="item.name" (keydown.enter)="onSave(i)" />
                             <input type="number" min="1" class="w-25 ms-3" placeholder="Quantity" id="txtQuantity" [(ngModel)]="item.quantity" />
                             <select class="w-25 form-select ms-3" [(ngModel)]="item.measurement">
@@ -34,14 +34,14 @@
                                 <option value="g">g</option>
                                 <option value="kg">kg</option>
                             </select>
-                            <button class="btn btn-warning custom-button ms-3 py-2" type="submit" (click)="onSave(i)">
+                            <button class="btn btn-warning b-radius-general ms-3 py-2" type="submit" (click)="onSave(i)">
                                 Save
                             </button>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div>
-                        <i (click)="onEdit(item)" class="fa-solid fa-pencil edit-icon me-2"></i>
+                        <i (click)="openEditModal(item)" class="fa-solid fa-pencil edit-icon me-2"></i>
                         <i (click)="onDelete(item)" class="fa-solid fa-trash delete-icon"></i>
                     </div>
                 </li>

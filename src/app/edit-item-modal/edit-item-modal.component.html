@@ -1,1 +1,21 @@
-<p>edit-item-modal works!</p>
+<div class="modal-header">
+    <h4 class="modal-title">Edit Item</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="onClose()"></button>
+</div>
+<div class="modal-body">
+    <input type="text" class="form-control b-radius-general py-2 px-3 mb-2" [(ngModel)]="updatedItem.name">
+    <div class="d-flex mb-2">
+        <input type="number" class="form-control b-radius-general py-2 px-3 me-2" [(ngModel)]="updatedItem.quantity">
+        <select class="form-select b-radius-general py-2 px-3" [(ngModel)]="updatedItem.measurement">
+            <option value="pcs">pcs</option>
+            <option value="ml">ml</option>
+            <option value="l">l</option>
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+        </select>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn b-radius-general btn-secondary" (click)="onClose()">Close</button>
+    <button type="button" class="btn b-radius-general btn-warning" (click)="onSave()">Save changes</button>
+</div>
